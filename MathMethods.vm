@@ -1,0 +1,110 @@
+function MathMethods.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+return
+function MathMethods.calculatePower 0
+push argument 0
+pop pointer 0
+push argument 2
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+return
+label IF_FALSE0
+push argument 2
+push constant 1
+sub
+pop argument 2
+push argument 1
+push pointer 0
+push argument 1
+push argument 2
+call MathMethods.calculatePower 3
+call Math.multiply 2
+return
+function MathMethods.simpleModulus 2
+push argument 0
+pop pointer 0
+push argument 1
+push argument 2
+call Math.divide 2
+push argument 2
+call Math.multiply 2
+pop local 1
+push argument 1
+push local 1
+sub
+pop local 0
+push local 0
+return
+function MathMethods.isEven 1
+push argument 0
+pop pointer 0
+push pointer 0
+push argument 1
+push constant 2
+call MathMethods.simpleModulus 3
+pop local 0
+push local 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+return
+goto IF_END0
+label IF_FALSE0
+push constant 0
+return
+label IF_END0
+function MathMethods.CalculateGCD 1
+push argument 0
+pop pointer 0
+push argument 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 2
+return
+label IF_FALSE0
+push pointer 0
+push argument 2
+push argument 1
+call MathMethods.simpleModulus 3
+pop local 0
+push pointer 0
+push local 0
+push argument 1
+call MathMethods.CalculateGCD 3
+return
+function MathMethods.CalculateLCM 1
+push argument 0
+pop pointer 0
+push argument 1
+push pointer 0
+push argument 1
+push argument 2
+call MathMethods.CalculateGCD 3
+call Math.divide 2
+push argument 2
+call Math.multiply 2
+pop local 0
+push local 0
+return
+function MathMethods.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,56 @@
+class Main{
+    function void main(){
+        /**
+        Program to test out various functionality of the MathMethods class.
+        Extends a few mathemtical operations that I feel should have been implemented in the Jack Language to begin with
+        
+        */
+        var MathMethods mathFuncs;
+        var int resultOfOperation;
+        var boolean isEven;
+
+        let mathFuncs = MathMethods.new();
+        do Output.printString("Testing functionality of the MathMethods class");
+        do Output.println();
+        do Output.printString("Finding the result of 5, raised to the power of 4");
+        do Output.println();
+        let resultOfOperation = mathFuncs.calculatePower(5,4);
+        do Output.printInt(resultOfOperation);
+        do Output.println();
+
+        do Output.printString("Calculating the result of 10 % 2: ");
+        let resultOfOperation = mathFuncs.simpleModulus(10,2);
+        do Output.printInt(resultOfOperation);
+        do Output.println();
+
+        do Output.printString("Checking to see if the number 101 is even...");
+        let isEven = mathFuncs.isEven(101);
+        if(isEven){
+            do Output.printString("101 is even.");
+            do Output.println();
+        }
+        else{
+            do Output.printString("101 is odd.");
+            do Output.println();
+        }
+
+        do Output.printString("Calculating the GCD of 24 and 16..");
+        let resultOfOperation = mathFuncs.CalculateGCD(24,16);
+        do Output.printInt(resultOfOperation);
+        do Output.println();
+
+
+        do Output.printString("Calculating the LCM of 24 and 16..");
+        let resultOfOperation = mathFuncs.CalculateLCM(24,16);
+        do Output.printInt(resultOfOperation);
+        do Output.println();
+        do mathFuncs.dispose();
+
+
+
+        
+        
+        return;
+        
+    }
+}

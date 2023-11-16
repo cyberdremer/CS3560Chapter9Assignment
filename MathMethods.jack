@@ -1,0 +1,74 @@
+class MathMethods{
+    /**
+    Garbage value initialization to ensure that the class doesn't cause compiler warnings.
+    */
+    field int random;
+
+
+    /**
+    Instantiate a MathMathods class
+    */
+    constructor MathMethods new(){
+        return this;
+    }
+
+    /**
+    Recursive computation of the power of a number.
+    */
+    method int calculatePower(int base, int exponent){
+        if(exponent = 0){
+            return 1;
+        }
+        let exponent = exponent - 1;
+        return base * calculatePower(base, exponent);
+    }
+    /**
+    Compute the modulus of a number using a simple formula.
+    */
+
+    method int simpleModulus(int dividend, int divisor){
+        var int finalResult;
+        var int divideResult;
+        let divideResult = (dividend / divisor) * divisor;
+        let finalResult = dividend - divideResult;
+        return finalResult;
+    }
+        
+
+
+    method Boolean isEven(int value){
+        var int result;
+        let result = simpleModulus(value,2);
+        if(result = 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    method int CalculateGCD(int num1, int num2){
+        var int modulusResult;
+        if(num1 = 0){
+            return num2;
+        }
+        let modulusResult = simpleModulus(num2, num1);
+        return CalculateGCD(modulusResult,num1);
+    }
+    
+
+    method int CalculateLCM(int num1, int num2){
+        var int LCM;
+        let LCM = (num1 / CalculateGCD(num1, num2) ) * num2;
+        return LCM;
+
+    }
+
+    
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    
+}
